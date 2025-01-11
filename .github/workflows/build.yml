@@ -36,10 +36,14 @@ jobs:
     
     - name: Create DMG
       run: |
+        mkdir -p "dist/dmg_content"
+        cp -R "dist/Chapter Viewer.app" "dist/dmg_content/"
+        ln -s /Applications "dist/dmg_content/Applications"
+        
         hdiutil create -volname "Chapter Viewer" \
-                      -srcfolder "dist/Chapter Viewer.app" \
-                      -ov -format UDZO \
-                      "dist/ChapterViewer.dmg"
+                    -srcfolder "dist/dmg_content" \
+                    -ov -format UDZO \
+                    "dist/ChapterViewer.dmg" 
     
     - name: Create Release
       id: create_release
