@@ -40,7 +40,7 @@ jobs:
     
     - name: Verify the .app exists
       run: |
-        if [ -d "dist/Chapter Viewer.app" ]; then echo "Found .app"; else echo "App not found"; exit 1; fi
+        if [ -d "dist/ChapterViewer.app" ]; then echo "Found .app"; else echo "App not found"; exit 1; fi
     
     - name: Install create-dmg
       run: brew install create-dmg
@@ -48,12 +48,12 @@ jobs:
     - name: Create DMG
       run: |
         create-dmg \
-          --volname "Chapter Viewer" \
+          --volname "ChapterViewer" \
           --window-pos 200 120 \
           --window-size 500 300 \
-          --icon "Chapter Viewer.app" 130 200 \
+          --icon "ChapterViewer.app" 130 200 \
           --app-drop-link 370 200 \
-          "dist/Chapter Viewer.app" \
+          "dist/ChapterViewer.app" \
           "dist/ChapterViewer.dmg"
     
     - name: Verify DMG creation
