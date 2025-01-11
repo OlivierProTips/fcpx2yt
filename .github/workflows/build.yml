@@ -28,18 +28,22 @@ jobs:
     
     - name: Build MacOS app
       run: |
-        pyinstaller --name="Chapter Viewer" \
+        pyinstaller --name="ChapterViewer" \
                    --windowed \
                    --onefile \
                    --icon=icon.icns \
                    --add-data="icon.icns:." \
                    main.py
     
-    - name: Install create-dmg
-      run: brew install create-dmg
-    
     - name: Verify dist folder
       run: ls -R dist/
+    
+    - name: Verify the .app exists
+      run: |
+        if [ -d "dist/Chapter Viewer.app" ]; then echo "Found .app"; else echo "App not found"; exit 1; fi
+    
+    - name: Install create-dmg
+      run: brew install create-dmg
     
     - name: Create DMG
       run: |
