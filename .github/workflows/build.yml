@@ -53,7 +53,7 @@ jobs:
           --window-size 500 300 \
           --icon "ChapterViewer.app" 130 200 \
           --app-drop-link 370 200 \
-          --output "dist/ChapterViewer.dmg" \
+          dist/ChapterViewer.dmg \
           dist/ChapterViewer.app
     
     
