@@ -28,7 +28,7 @@ jobs:
     
     - name: Build MacOS app
       run: |
-        pyinstaller --name="ChapterViewer" \
+        pyinstaller --name="FCPX2YT" \
                    --windowed \
                    --onefile \
                    --icon=icon.icns \
@@ -40,7 +40,7 @@ jobs:
     
     - name: Verify the .app exists
       run: |
-        if [ -d "dist/ChapterViewer.app" ]; then echo "Found .app"; else echo "App not found"; exit 1; fi
+        if [ -d "dist/FCPX2YT.app" ]; then echo "Found .app"; else echo "App not found"; exit 1; fi
     
     - name: Install create-dmg
       run: brew install create-dmg
@@ -48,13 +48,13 @@ jobs:
     - name: Create DMG
       run: |
         create-dmg \
-          --volname "ChapterViewer" \
+          --volname "FCPX2YT" \
           --window-pos 200 120 \
           --window-size 500 300 \
-          --icon "ChapterViewer.app" 130 200 \
+          --icon "FCPX2YT.app" 130 200 \
           --app-drop-link 370 200 \
-          dist/ChapterViewer.dmg \
-          dist/ChapterViewer.app
+          dist/FCPX2YT.dmg \
+          dist/FCPX2YT.app
     
     
     - name: Verify DMG creation
@@ -66,7 +66,7 @@ jobs:
       if: startsWith(github.ref, 'refs/tags/')
       with:
         files: |
-          dist/ChapterViewer.dmg
+          dist/FCPX2YT.dmg
         draft: false
         prerelease: false
       env:
