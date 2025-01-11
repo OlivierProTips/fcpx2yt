@@ -12,7 +12,8 @@ jobs:
     runs-on: macos-latest
     
     steps:
-    - uses: actions/checkout@v3
+    - name: Check out code
+      uses: actions/checkout@v3
     
     - name: Set up Python
       uses: actions/setup-python@v4
@@ -36,17 +37,23 @@ jobs:
     
     - name: Install create-dmg
       run: brew install create-dmg
-
+    
+    - name: Verify dist folder
+      run: ls -R dist/
+    
     - name: Create DMG
       run: |
         create-dmg \
           --volname "Chapter Viewer" \
           --window-pos 200 120 \
           --window-size 500 300 \
-          --icon-size 100 \
-          --app-drop-link 380 120 \
+          --icon "Chapter Viewer.app" 130 200 \
+          --app-drop-link 370 200 \
           "dist/Chapter Viewer.app" \
           "dist/ChapterViewer.dmg"
+    
+    - name: Verify DMG creation
+      run: ls -R dist/
     
     - name: Create Release
       id: create_release
