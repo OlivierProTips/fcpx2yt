@@ -143,7 +143,7 @@ class ChapterViewer(QMainWindow):
             for marker in chapter_markers:
                 start = self.parse_time(marker.get('start'))
                 value = marker.get('value')
-                output_text += f"{start} - {value}\n"
+                output_text += f"{start} {value}\n"
             
             return output_text
             
