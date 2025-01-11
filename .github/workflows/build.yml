@@ -53,8 +53,8 @@ jobs:
           --window-size 500 300 \
           --icon "ChapterViewer.app" 130 200 \
           --app-drop-link 370 200 \
-          "dist/ChapterViewer.app" \
-          "dist/ChapterViewer.dmg"
+          dist/ChapterViewer.app \
+          dist/ChapterViewer.dmg
     
     - name: Verify DMG creation
       run: ls -R dist/
