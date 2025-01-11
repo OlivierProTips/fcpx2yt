@@ -34,16 +34,19 @@ jobs:
                    --add-data="icon.icns:." \
                    main.py
     
+    - name: Install create-dmg
+      run: brew install create-dmg
+
     - name: Create DMG
       run: |
-        mkdir -p "dist/dmg_content"
-        cp -R "dist/Chapter Viewer.app" "dist/dmg_content/"
-        ln -s /Applications "dist/dmg_content/Applications"
-        
-        hdiutil create -volname "Chapter Viewer" \
-                    -srcfolder "dist/dmg_content" \
-                    -ov -format UDZO \
-                    "dist/ChapterViewer.dmg" 
+        create-dmg \
+          --volname "Chapter Viewer" \
+          --window-pos 200 120 \
+          --window-size 500 300 \
+          --icon-size 100 \
+          --app-drop-link 380 120 \
+          "dist/Chapter Viewer.app" \
+          "dist/ChapterViewer.dmg"
     
     - name: Create Release
       id: create_release
